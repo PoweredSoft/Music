@@ -20,12 +20,12 @@ namespace PoweredSoft.Music.Web.Controllers
         public IGuitar StandardTunning([FromServices]IGuitarService s, int fretCount) => s.StandardTuning(fretCount);
 
         [HttpGet, Route("[controller]/Custom/{fretCount}/{notes}")]
-        public IGuitar Custom([FromServices]IFrettedLuteInstrumentService flus,
+        public IGuitar Custom([FromServices]IStringInstrumentService flus,
             [FromServices]INoteService noteService, int fretCount, string notes)
         {
             var splittedNotes = notes.Split(',');
             var openStrings = splittedNotes.Select(n => noteService.GetNoteByName(n)).ToArray();
-            var guitar = flus.CreatedInstrumnent<Guitar>(fretCount, openStrings);
+            var guitar = flus.CreateInstrument<Guitar>(fretCount, openStrings);
             return guitar;
         }
     }

@@ -10,7 +10,7 @@ namespace PoweredSoft.Music.String.Extensions
     {
         public static IServiceCollection AddPoweredSoftStringMusicTheory(this IServiceCollection services)
         {
-            services.TryAddTransient<IFrettedLuteInstrumentService, FrettedLuteInstrumentService>();
+            services.TryAddTransient<IStringInstrumentService, StringInstrumentService>();
             services.TryAddTransient<IGuitarService, GuitarService>();
             services.TryAddTransient<IUkuleleService, UkuleleService>();
             return services;

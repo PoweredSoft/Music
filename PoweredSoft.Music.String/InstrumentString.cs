@@ -6,8 +6,10 @@ using System.Text;
 
 namespace PoweredSoft.Music.String
 {
-    public class Fret : IFret
+    public class InstrumentString : IInstrumentString
     {
-        public INote Note { get; set; }
+        public INote OpenStringNote { get; set; }
+
+        public IList<INote> Notes { get; set; }
     }
 }

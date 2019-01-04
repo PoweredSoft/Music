@@ -5,8 +5,10 @@ using System.Text;
 
 namespace PoweredSoft.Music.String
 {
-    public class Guitar : FrettedLuteInstrument, IGuitar
+    public class Guitar : StringInstrument, IGuitar
     {
         public override string Name => "Guitar";
+
+        public override bool HasFrets => true;
     }
 }

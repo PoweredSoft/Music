@@ -5,6 +5,9 @@ namespace PoweredSoft.Music.String.Core
 {
     public interface IStringInstrument : IInstrument
     {
-        IEnumerable<IInstrumentString> Strings { get; }
+        int SemiToneCount { get; set; }
+        bool HasFrets { get; }
+
+        List<IInstrumentString> Strings { get; set; }
     }
 }

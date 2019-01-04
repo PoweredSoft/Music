@@ -4,7 +4,8 @@ using System.Text;
 
 namespace PoweredSoft.Music.String.Core.Guitar
 {
-    public interface IGuitar : IFrettedLuteInstrument
+    public interface IGuitar : IStringInstrument
     {
+
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PoweredSoft.Music.String.Extensions;
 using PoweredSoft.Music.Theory.Extensions;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -37,6 +38,7 @@ namespace PoweredSoft.Music.Web
             services.AddMemoryCache();
             services.AddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, Microsoft.AspNetCore.Http.HttpContextAccessor>();
             services.AddPoweredSoftMusicTheory();
+            services.AddPoweredSoftStringMusicTheory();
 
             services.AddSwaggerGen(c =>
             {

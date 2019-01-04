@@ -2,8 +2,10 @@
 
 namespace PoweredSoft.Music.String
 {
-    public class Ukulele : FrettedLuteInstrument, IUkulele
+    public class Ukulele : StringInstrument, IUkulele
     {
         public override string Name => "Ukulele";
+
+        public override bool HasFrets => true;
     }
 }

@@ -6,14 +6,14 @@ namespace PoweredSoft.Music.String
 {
     public class GuitarService : IGuitarService
     {
-        public GuitarService(INoteService noteService, IFrettedLuteInstrumentService frettedLuteInstrumentService)
+        public GuitarService(INoteService noteService, IStringInstrumentService frettedLuteInstrumentService)
         {
             NoteService = noteService;
             FrettedLuteInstrumentService = frettedLuteInstrumentService;
         }
 
         public INoteService NoteService { get; }
-        public IFrettedLuteInstrumentService FrettedLuteInstrumentService { get; }
+        public IStringInstrumentService FrettedLuteInstrumentService { get; }
 
         public IGuitar StandardTuning(int fretCount = 24)
         {
@@ -22,7 +22,7 @@ namespace PoweredSoft.Music.String
             var d = NoteService.GetNoteByName("D");
             var g = NoteService.GetNoteByName("G");
             var b = NoteService.GetNoteByName("B");
-            var guitar = FrettedLuteInstrumentService.CreatedInstrumnent<Guitar>(24, e, b, g, d, a, e);
+            var guitar = FrettedLuteInstrumentService.CreateInstrument<Guitar>(24, e, b, g, d, a, e);
             return guitar;
         }
     }

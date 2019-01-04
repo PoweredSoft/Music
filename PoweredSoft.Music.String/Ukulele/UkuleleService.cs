@@ -9,18 +9,18 @@ namespace PoweredSoft.Music.String
 {
     public class UkuleleService : IUkuleleService
     {
-        public UkuleleService(INoteService noteService, IFrettedLuteInstrumentService frettedLuteInstrumentService)
+        public UkuleleService(INoteService noteService, IStringInstrumentService frettedLuteInstrumentService)
         {
             NoteService = noteService;
             FrettedLuteInstrumentService = frettedLuteInstrumentService;
         }
 
         public INoteService NoteService { get; }
-        public IFrettedLuteInstrumentService FrettedLuteInstrumentService { get; }
+        public IStringInstrumentService FrettedLuteInstrumentService { get; }
 
         public IUkulele LargerBodyDGBETuning(int fretCount = 20)
         {
-            var ukulele = FrettedLuteInstrumentService.CreatedInstrumnent<Ukulele>(fretCount, 
+            var ukulele = FrettedLuteInstrumentService.CreateInstrument<Ukulele>(fretCount, 
                 NoteService.GetNoteByName("E"),
                 NoteService.GetNoteByName("B"),
                 NoteService.GetNoteByName("G"),
@@ -31,7 +31,7 @@ namespace PoweredSoft.Music.String
 
         public IUkulele StandardGCEATuning(int fretCount = 15)
         {
-            var ukulele = FrettedLuteInstrumentService.CreatedInstrumnent<Ukulele>(fretCount,
+            var ukulele = FrettedLuteInstrumentService.CreateInstrument<Ukulele>(fretCount,
                 NoteService.GetNoteByName("A"),
                 NoteService.GetNoteByName("E"),
                 NoteService.GetNoteByName("C"),
@@ -43,7 +43,7 @@ namespace PoweredSoft.Music.String
 
         public IUkulele SweeterADFSharpBTuning(int fretCount = 15)
         {
-            var ukulele = FrettedLuteInstrumentService.CreatedInstrumnent<Ukulele>(fretCount,
+            var ukulele = FrettedLuteInstrumentService.CreateInstrument<Ukulele>(fretCount,
                 NoteService.GetNoteByName("B"),
                 NoteService.GetNoteByName("F#"),
                 NoteService.GetNoteByName("D"),

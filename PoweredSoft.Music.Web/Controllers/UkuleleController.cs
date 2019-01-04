@@ -32,12 +32,12 @@ namespace PoweredSoft.Music.Web.Controllers
         public IUkulele LargerBodyDGBETuning([FromServices]IUkuleleService s, int fretCount) => s.LargerBodyDGBETuning(fretCount);
 
         [HttpGet, Route("[controller]/Custom/{fretCount}/{notes}")]
-        public IUkulele Custom([FromServices]IFrettedLuteInstrumentService flus,
+        public IUkulele Custom([FromServices]IStringInstrumentService flus,
             [FromServices]INoteService noteService, int fretCount, string notes)
         {
             var splittedNotes = notes.Split(',');
             var openStrings = splittedNotes.Select(n => noteService.GetNoteByName(n)).ToArray();
-            var guitar = flus.CreatedInstrumnent<Ukulele>(fretCount, openStrings);
+            var guitar = flus.CreateInstrument<Ukulele>(fretCount, openStrings);
             return guitar;
         }
     }

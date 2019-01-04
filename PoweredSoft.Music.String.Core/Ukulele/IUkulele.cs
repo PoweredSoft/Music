@@ -4,7 +4,8 @@ using System.Text;
 
 namespace PoweredSoft.Music.String.Core.Ukulele
 {
-    public interface IUkulele : IFrettedLuteInstrument
+    public interface IUkulele : IStringInstrument
     {
+
     }
 }
