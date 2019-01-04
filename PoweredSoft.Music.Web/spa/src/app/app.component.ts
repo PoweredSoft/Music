@@ -11,6 +11,7 @@ export class AppComponent {
 
   menu: IMenuItem[] = [
     { title: 'Home', route: '/' },
-    { title: 'Notes', route: '/notes' }
+    { title: 'Notes', route: '/notes' },
+    { title: 'Reverse Chord', route: '/reverse-chord'}
   ]
 }

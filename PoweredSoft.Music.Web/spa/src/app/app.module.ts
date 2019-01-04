@@ -13,11 +13,15 @@ import { NoteDetailPageComponent } from 'src/pages/note-detail/note-detail-page.
 import { NoteIntervalService } from 'src/services/note-interval.service';
 import { ChordService } from 'src/services/chord.service';
 import { NotesBadgeSetComponent } from 'src/components/notes-badge-set/notes-badge-set.component';
+import { ReverseChordPageComponent } from 'src/pages/reverse-chord/reverse-chord-page.component';
+import { StringInstrumentComponent } from 'src/components/string-instrument/string-instrument.component';
+import { GuitarComponent } from 'src/components/guitar/guitar.component';
+import { GuitarService } from 'src/services/guitar.service';
 
 
-const components = [NoteComponent, NoteBadgeComponent, NotesBadgeSetComponent];
-const pages = [HomePageComponent, NotePageComponent, NoteDetailPageComponent];
-const services = [NoteService, NoteIntervalService, ChordService];
+const components = [NoteComponent, NoteBadgeComponent, NotesBadgeSetComponent, StringInstrumentComponent, GuitarComponent];
+const pages = [HomePageComponent, NotePageComponent, NoteDetailPageComponent, ReverseChordPageComponent];
+const services = [NoteService, NoteIntervalService, ChordService, GuitarService];
 
 @NgModule({
   declarations: [

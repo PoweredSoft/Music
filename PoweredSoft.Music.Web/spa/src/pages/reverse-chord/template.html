@@ -1,0 +1,7 @@
+<div class="container-fluid">
+    <h1>Reverse Chord</h1>
+    <hr>
+    <div class="mt-1" *ngIf="guitar$ | async as guitar">
+        <guitar [model]="guitar" showNotes="true"></guitar>
+    </div>
+</div>

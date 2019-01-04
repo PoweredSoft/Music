@@ -1,0 +1,38 @@
+:host {
+    table {
+        width: 100%;
+        
+        thead {
+            th {
+                text-align: center;
+            }
+        }
+
+        tbody {
+            th {
+                text-align: center;
+            }
+            td {
+                border-right: 2px solid black;
+                background: #d4a853;
+                text-align: center;
+                height: 35px;
+                position: relative;
+
+                .badge {
+                    position: absolute;
+                    top: 25%;
+                    right: 5px;
+                }
+
+                hr {
+                    border-color:white;
+                }
+            }
+
+            td.bridge {
+                border-right: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+<table *ngIf="model">
+    <thead>
+        <tr>
+            <th *ngFor="let item of [].constructor(model.semiToneCount+1); let i = index" [style.width]="getFretWidth(i)">{{ i }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of finalStrings">
+            <th [class.font-weight-bold]="isInNotes(s.openStringNote)" (click)="emitNoteClicked(s.openStringNote)" [class.text-primary]="isInNotes(s.openStringNote)">{{ s.openStringNote.name }}</th>
+            <td *ngFor="let n of s.notes" (click)="emitNoteClicked(n)">
+                <div class="badge" [class.badge-light]="!isInNotes(n)" [class.badge-primary]="isInNotes(n)" *ngIf="showNote(n)">{{ n.name}}</div>
+                <hr [style.border-top-width]="getStringWidth(s)">
+            </td>
+            <td class="bridge">
+                <hr [style.border-top-width]="getStringWidth(s)">
+            </td>
+        </tr>
+    </tbody>
+</table>
