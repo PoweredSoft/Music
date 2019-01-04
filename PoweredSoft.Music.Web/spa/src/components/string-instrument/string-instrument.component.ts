@@ -27,7 +27,7 @@ export class StringInstrumentComponent
     }
 
     getStringWidth(s: IInstrumentString) {
-        return 0.5 + (0.5 * this.model.strings.indexOf(s)) + 'px';
+        return 1 + (0.5 * this.model.strings.indexOf(s)) + 'px';
     }
 
     getFretWidth(index: number) {
@@ -52,8 +52,9 @@ export class StringInstrumentComponent
         return this.reversed ? this.model.strings.slice().reverse() : this.model.strings;
     }
 
-    isInNotes(note: INote) {
-        return this.notes && this.notes.find(t => t.note.name == note.name) !== null;
+    isInNotes(note: INote) 
+    {
+        return this.notes && this.notes.findIndex(t => t.note.name == note.name) > -1 ? true : false;
     }
 
     showNote(note: INote) {

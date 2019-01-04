@@ -183,5 +183,22 @@ namespace PoweredSoft.Music.Theory
         {
             return semiTone <= 12 ? semiTone : semiTone-12;
         }
+
+        public IList<IChord> ReverseSearch(IEnumerable<string> notes)
+        {
+            var realNotes = notes.Select(noteName => this.NoteService.GetNoteByName(noteName)).ToList();
+            var ret = ReverseSearch(realNotes);
+            return ret;            
+        }
+
+        public IList<IChord> ReverseSearch(IEnumerable<INote> notes)
+        {
+            var possibleChords = notes.SelectMany(note => GetChords(note)).ToList();
+            var ret = possibleChords
+                .Where(chord => notes.All(n => chord.Notes.Any(cn => cn.Equals(n))))
+                .ToList();
+
+            return ret;
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace PoweredSoft.Music.Theory.Core
         IList<IChord> GetChords(INote note);
         IList<IChord> GetChords(string name);
         IList<IChordDefinition> GetDefinitions();
+        IList<IChord> ReverseSearch(IEnumerable<string> notes);
+        IList<IChord> ReverseSearch(IEnumerable<INote> notes);
     }
 }

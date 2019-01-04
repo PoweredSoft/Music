@@ -16,5 +16,12 @@ namespace PoweredSoft.Music.Web.Controllers
 
         [HttpGet, Route("/api/[controller]s/{note}/{type}")]
         public IChord GetChord([FromServices]IChordService chordService, string note, Chords type) => chordService.GetChord(note, type);
+
+        [HttpGet, Route("/api/[controller]s/reverse-search/{notes}")]
+        public IEnumerable<IChord> ReverseSearch([FromServices]IChordService chordService, string notes)
+        {
+            var splitted = notes.Split(',');
+            return chordService.ReverseSearch(splitted);
+        }
     }
 }

@@ -2,6 +2,23 @@
     <h1>Reverse Chord</h1>
     <hr>
     <div class="mt-1" *ngIf="guitar$ | async as guitar">
-        <guitar [model]="guitar" showNotes="true"></guitar>
+        <guitar [model]="guitar" showNotes="true" [notes]="selectedNotes" (noteClicked)="noteClicked($event)"></guitar>
     </div>
+
+    <h4 class="mt-2">Selected Notes: <notes-badge-set [notes]="notes"></notes-badge-set></h4>
+    <div class="mt-2 btn-group">
+        <button class="btn btn-primary btn-sm mt-2" (click)="searchPossibleChords()">Search for possible chords with matching notes</button>
+        <button class="btn btn-secondary btn-sm mt-2" (click)="reset()">Clear selected notes</button>
+    </div>
+
+    
+    <ul class="list-group mt-2" *ngIf="matchedChords">
+        <li class="list-group-item" *ngFor="let mc of matchedChords">
+            <note [note]="mc.key"></note>{{mc.chordDefinition.title}} 
+            <br>
+            <span class="font-weight-light">{{ mc.chordDefinition.description}}</span>
+            <br>
+            <notes-badge-set [notes]="mc.notes"></notes-badge-set>
+        </li>
+    </ul>
 </div>
