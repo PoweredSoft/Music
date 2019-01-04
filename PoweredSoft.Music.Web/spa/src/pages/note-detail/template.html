@@ -1,4 +1,4 @@
-<div class="container mt-2">
+<div class="container mt-2" *ngIf="note$ | async as note">
     <h1><note [note]="note"></note></h1>
     <h4>Intervals</h4>
     <table class="table table-sm table-stripped"> 
@@ -32,7 +32,7 @@
         <tbody>
             <tr *ngFor="let c of chords$ | async">
                 <td class="text-nowrap">
-                    <note-badge [note]="n" *ngFor="let n of c.notes"></note-badge>
+                    <notes-badge-set [notes]="c.notes"></notes-badge-set>
                 </td>
                 <td class="text-nowrap">{{ c.chordDefinition.title }}</td>
                 <td>{{ c.chordDefinition.description }}</td>
