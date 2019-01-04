@@ -15,6 +15,6 @@ namespace PoweredSoft.Music.Theory
 
         public bool Equals(string other) => Name.Equals(other, StringComparison.InvariantCultureIgnoreCase) || true == AlternativeName?.Equals(other, StringComparison.InvariantCultureIgnoreCase);
 
-        public override string ToString() => $"{Name} {AlternativeName}";
+        public override string ToString() => $"{Name} {AlternativeName}".TrimEnd();
     }
 }

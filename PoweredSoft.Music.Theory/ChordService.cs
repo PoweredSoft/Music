@@ -9,6 +9,12 @@ namespace PoweredSoft.Music.Theory
 {
     public class ChordService
     {
+        public ChordService(INoteIntervalService noteIntervalService, INoteService noteService)
+        {
+            NoteIntervalService = noteIntervalService;
+            NoteService = noteService;
+        }
+
         private readonly List<ChordDefinition> definitions = new List<ChordDefinition>
         {
             new ChordDefinition
@@ -97,9 +103,73 @@ namespace PoweredSoft.Music.Theory
             }
         };
 
+        protected INoteIntervalService NoteIntervalService { get; }
+        protected INoteService NoteService { get; }
+
         public IList<IChordDefinition> GetDefinitions()
         {
             return definitions.Select(d => d.DeepClone()).AsEnumerable<IChordDefinition>().ToList();
+        }
+
+        public IChord GetChord(string name, Chords type)
+        {
+            var note = NoteService.GetNoteByName(name);
+            return GetChord(note, type);
+        }
+
+        public IChord GetChord(string name, string title)
+        {
+            var note = NoteService.GetNoteByName(name);
+            return GetChord(note, title);
+        }
+
+        public IChord GetChord(string name, ChordDefinition definition)
+        {
+            var note = NoteService.GetNoteByName(name);
+            return GetChord(note, definition);
+        }
+
+        public IChord GetChord(INote note, Chords type)
+        {
+            var definition = definitions.FirstOrDefault(d => d.Equals(type));
+            if (definition == null)
+                throw new ArgumentException($"the type {type} is not a supported chord", nameof(type));
+
+            var ret = GetChord(note, definition);
+            return ret;
+        }
+
+        public IChord GetChord(INote note, ChordDefinition definition)
+        {
+            var noteIntervals = NoteIntervalService.GetNoteIntervals(note);
+            var notes = definition.SemiTones.Select(st =>
+            {
+                var safe = SafeSemiTone(st);
+                var interval = noteIntervals.First(ni => ni.Interval.DistanceInSemiTones == safe);
+                return interval.Note.DeepClone();
+            }).ToList();
+
+            return new Chord
+            {
+                Key = note.DeepClone(),
+                ChordDefinition = definition.DeepClone(),
+                Notes = notes
+            };
+        }
+
+        public IChord GetChord(INote note, string title)
+        {
+            var definition = definitions.FirstOrDefault(d => d.Equals(title));
+            if (definition == null)
+                throw new ArgumentException($"{title} is not a supported chord", nameof(title));
+
+            var ret = GetChord(note, definition);
+            return ret;
+        }
+
+        protected int SafeSemiTone(int semiTone)
+        {
+            return semiTone <= 12 ? semiTone : semiTone-12;
         }
     }
 }

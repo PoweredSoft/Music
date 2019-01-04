@@ -17,5 +17,10 @@ namespace PoweredSoft.Music.Theory
         public bool Equals(Chords other) => Type == other;
 
         public bool Equals(string other) => Title.Equals(other, StringComparison.InvariantCultureIgnoreCase);
+
+        public override string ToString()
+        {
+            return $"{Title}";
+        }
     }
 }
