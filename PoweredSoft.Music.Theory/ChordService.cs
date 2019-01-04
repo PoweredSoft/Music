@@ -7,7 +7,7 @@ using System.Text;
 
 namespace PoweredSoft.Music.Theory
 {
-    public class ChordService
+    public class ChordService : IChordService
     {
         public ChordService(INoteIntervalService noteIntervalService, INoteService noteService)
         {
@@ -165,6 +165,18 @@ namespace PoweredSoft.Music.Theory
 
             var ret = GetChord(note, definition);
             return ret;
+        }
+
+        public IList<IChord> GetChords(string name)
+        {
+            var note = NoteService.GetNoteByName(name);
+            return GetChords(note);
+        }
+
+        public IList<IChord> GetChords(INote note)
+        {
+            var chords = definitions.Select(d => GetChord(note, d)).ToList();
+            return chords;
         }
 
         protected int SafeSemiTone(int semiTone)
