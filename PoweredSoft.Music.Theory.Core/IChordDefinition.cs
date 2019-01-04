@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PoweredSoft.Music.Theory.Core
 {
-    public interface IChordDefinition
+    public interface IChordDefinition : IEquatable<IChordDefinition>,  IEquatable<Chords>, IEquatable<string>
     {
         Chords Type { get; set; }
         string Title { get; set; }

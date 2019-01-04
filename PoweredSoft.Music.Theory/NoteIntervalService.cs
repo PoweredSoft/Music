@@ -70,7 +70,7 @@ namespace PoweredSoft.Music.Theory
 
             INote ret = note;
             for(var i = 0; i < semiTones; i++)
-                ret = GetNextNote(notes, note);
+                ret = GetNextNote(notes, ret);
 
             return ret;
         }
