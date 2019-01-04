@@ -1,0 +1,42 @@
+<div class="container mt-2">
+    <h1><note [note]="note"></note></h1>
+    <h4>Intervals</h4>
+    <table class="table table-sm table-stripped"> 
+        <thead>
+            <tr>
+                <th>Distance in semi tones</th>
+                <th>Note</th>
+                <th>Name</th>
+                <th>Symbol</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ni of noteIntervals$ | async">
+                <td>{{ ni.interval.distanceInSemiTones }}</td>
+                <td><note-badge [note]="ni.note"></note-badge></td>
+                <td>{{ ni.interval.title }}</td>
+                <td>{{ ni.interval.symbol }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>Chords</h4>
+    <table class="table table-sm table-stripped"> 
+        <thead>
+            <tr>
+                <th>Notes</th>
+                <th>Title</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of chords$ | async">
+                <td class="text-nowrap">
+                    <note-badge [note]="n" *ngFor="let n of c.notes"></note-badge>
+                </td>
+                <td class="text-nowrap">{{ c.chordDefinition.title }}</td>
+                <td>{{ c.chordDefinition.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

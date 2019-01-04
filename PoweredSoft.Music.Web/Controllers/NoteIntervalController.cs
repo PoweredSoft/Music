@@ -11,7 +11,7 @@ namespace PoweredSoft.Music.Web.Controllers
     [ApiController]
     public class NoteIntervalController : Controller
     {
-        [HttpGet, Route("[controller]s/{note}")]
+        [HttpGet, Route("api/[controller]s/{note}")]
         public IEnumerable<INoteInterval> Get([FromServices]INoteIntervalService noteIntervalService, string note)
             => noteIntervalService.GetNoteIntervals(note);
     }

@@ -13,25 +13,25 @@ namespace PoweredSoft.Music.Web.Controllers
     [ApiController]
     public class UkuleleController : Controller
     {
-        [HttpGet, Route("[controller]/StandardTuning")]
+        [HttpGet, Route("api/[controller]/StandardTuning")]
         public IUkulele StandardTuning([FromServices]IUkuleleService s) => s.StandardGCEATuning();
 
-        [HttpGet, Route("[controller]/StandardTuning/{fretCount}")]
+        [HttpGet, Route("api/[controller]/StandardTuning/{fretCount}")]
         public IUkulele StandardTuning([FromServices]IUkuleleService s, int fretCount) => s.StandardGCEATuning(fretCount);
 
-        [HttpGet, Route("[controller]/SweeterADFSharpBTuning")]
+        [HttpGet, Route("api/[controller]/SweeterADFSharpBTuning")]
         public IUkulele SweeterADFSharpBTuning([FromServices]IUkuleleService s) => s.SweeterADFSharpBTuning();
 
-        [HttpGet, Route("[controller]/SweeterADFSharpBTuning/{fretCount}")]
+        [HttpGet, Route("api/[controller]/SweeterADFSharpBTuning/{fretCount}")]
         public IUkulele SweeterADFSharpBTuning([FromServices]IUkuleleService s, int fretCount) => s.SweeterADFSharpBTuning(fretCount);
 
-        [HttpGet, Route("[controller]/LargerBodyDGBETuning")]
+        [HttpGet, Route("api/[controller]/LargerBodyDGBETuning")]
         public IUkulele LargerBodyDGBETuning([FromServices]IUkuleleService s) => s.LargerBodyDGBETuning();
 
-        [HttpGet, Route("[controller]/LargerBodyDGBETuning/{fretCount}")]
+        [HttpGet, Route("api/[controller]/LargerBodyDGBETuning/{fretCount}")]
         public IUkulele LargerBodyDGBETuning([FromServices]IUkuleleService s, int fretCount) => s.LargerBodyDGBETuning(fretCount);
 
-        [HttpGet, Route("[controller]/Custom/{fretCount}/{notes}")]
+        [HttpGet, Route("api/[controller]/Custom/{fretCount}/{notes}")]
         public IUkulele Custom([FromServices]IStringInstrumentService flus,
             [FromServices]INoteService noteService, int fretCount, string notes)
         {

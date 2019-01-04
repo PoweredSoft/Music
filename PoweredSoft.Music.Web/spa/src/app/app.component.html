@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" routerLink="/">Powered Soft Music</a>
+    <ul class="navbar-nav">
+        <li *ngFor="let mi of menu" class="nav-item">
+            <a class="nav-link" [routerLink]="mi.route">
+                {{ mi.title }}
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>

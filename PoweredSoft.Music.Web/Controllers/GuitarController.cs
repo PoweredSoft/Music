@@ -13,13 +13,13 @@ namespace PoweredSoft.Music.Web.Controllers
     [ApiController]
     public class GuitarController
     {
-        [HttpGet, Route("[controller]/StandardTuning")]
+        [HttpGet, Route("api/[controller]/StandardTuning")]
         public IGuitar StandardTuning([FromServices]IGuitarService s) => s.StandardTuning();
 
-        [HttpGet, Route("[controller]/StandardTuning/{fretCount}")]
+        [HttpGet, Route("api/[controller]/StandardTuning/{fretCount}")]
         public IGuitar StandardTunning([FromServices]IGuitarService s, int fretCount) => s.StandardTuning(fretCount);
 
-        [HttpGet, Route("[controller]/Custom/{fretCount}/{notes}")]
+        [HttpGet, Route("api/[controller]/Custom/{fretCount}/{notes}")]
         public IGuitar Custom([FromServices]IStringInstrumentService flus,
             [FromServices]INoteService noteService, int fretCount, string notes)
         {

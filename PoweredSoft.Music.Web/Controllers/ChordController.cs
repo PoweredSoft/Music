@@ -11,10 +11,10 @@ namespace PoweredSoft.Music.Web.Controllers
     [ApiController]
     public class ChordController : Controller
     {
-        [HttpGet, Route("[controller]s/{note}")]
+        [HttpGet, Route("/api/[controller]s/{note}")]
         public IEnumerable<IChord> GetAllChords([FromServices]IChordService chordService, string note) => chordService.GetChords(note);
 
-        [HttpGet, Route("[controller]s/{note}/{type}")]
+        [HttpGet, Route("/api/[controller]s/{note}/{type}")]
         public IChord GetChord([FromServices]IChordService chordService, string note, Chords type) => chordService.GetChord(note, type);
     }
 }

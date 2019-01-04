@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +17,10 @@
     <ProjectReference Include="..\PoweredSoft.Music.String\PoweredSoft.Music.String.csproj" />
     <ProjectReference Include="..\PoweredSoft.Music.Theory.Core\PoweredSoft.Music.Theory.Core.csproj" />
     <ProjectReference Include="..\PoweredSoft.Music.Theory\PoweredSoft.Music.Theory.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="spa\" />
   </ItemGroup>
 
 </Project>

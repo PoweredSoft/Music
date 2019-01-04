@@ -1,0 +1,22 @@
+<div class="container mt-2">
+    <h1>Notes</h1>
+        
+    <table class="table table-stripped table-sm">
+        <thead>
+            <tr>
+                <th>Note</th>
+                <th>Is Natural</th>
+                <th><small class="text-muted">actions</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let n of notes$ | async">
+                <td><note-badge [note]="n"></note-badge></td>
+                <td [class.font-weight-bold]="n.isNatural">{{ n.isNatural ? 'yes' : 'no' }}</td>
+                <td>
+                    <button class="btn btn-light btn-sm" [routerLink]="'/note/' + n.name">details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

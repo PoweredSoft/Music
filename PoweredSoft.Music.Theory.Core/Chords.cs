@@ -2,7 +2,7 @@
 {
     public enum Chords
     {
-        Major,
+        Major = 0,
         Minor,
         Deminished,
         MajorSeventh,
