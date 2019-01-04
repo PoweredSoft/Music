@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.Music.Theory.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.Music.Web", "PoweredSoft.Music.Web\PoweredSoft.Music.Web.csproj", "{0A2026DE-E0D4-4F6B-93CF-012250CAD552}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.Music.String.Core", "PoweredSoft.Music.String.Core\PoweredSoft.Music.String.Core.csproj", "{9B888920-6A73-4496-B92A-3B05A7F2E1A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoweredSoft.Music.String", "PoweredSoft.Music.String\PoweredSoft.Music.String.csproj", "{688AF2E3-333B-4035-92DB-FE62895403E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{0A2026DE-E0D4-4F6B-93CF-012250CAD552}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A2026DE-E0D4-4F6B-93CF-012250CAD552}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A2026DE-E0D4-4F6B-93CF-012250CAD552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B888920-6A73-4496-B92A-3B05A7F2E1A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B888920-6A73-4496-B92A-3B05A7F2E1A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B888920-6A73-4496-B92A-3B05A7F2E1A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B888920-6A73-4496-B92A-3B05A7F2E1A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{688AF2E3-333B-4035-92DB-FE62895403E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688AF2E3-333B-4035-92DB-FE62895403E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688AF2E3-333B-4035-92DB-FE62895403E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688AF2E3-333B-4035-92DB-FE62895403E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

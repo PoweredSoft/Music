@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PoweredSoft.Music.String.Core\PoweredSoft.Music.String.Core.csproj" />
+    <ProjectReference Include="..\PoweredSoft.Music.String\PoweredSoft.Music.String.csproj" />
     <ProjectReference Include="..\PoweredSoft.Music.Theory.Core\PoweredSoft.Music.Theory.Core.csproj" />
     <ProjectReference Include="..\PoweredSoft.Music.Theory\PoweredSoft.Music.Theory.csproj" />
   </ItemGroup>
