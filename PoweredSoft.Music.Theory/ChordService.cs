@@ -123,7 +123,7 @@ namespace PoweredSoft.Music.Theory
             return GetChord(note, title);
         }
 
-        public IChord GetChord(string name, ChordDefinition definition)
+        public IChord GetChord(string name, IChordDefinition definition)
         {
             var note = NoteService.GetNoteByName(name);
             return GetChord(note, definition);
@@ -139,7 +139,7 @@ namespace PoweredSoft.Music.Theory
             return ret;
         }
 
-        public IChord GetChord(INote note, ChordDefinition definition)
+        public IChord GetChord(INote note, IChordDefinition definition)
         {
             var noteIntervals = NoteIntervalService.GetNoteIntervals(note);
             var notes = definition.SemiTones.Select(st =>
