@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <h1>Scales</h1>
+    <div class="btn-group">
+        <button class="btn btn-sm btn-primary" (click)="add()">add</button>
+    </div>
+    <table class="table table-sm table-stripped mt-1">
+        <thead>
+            <tr>
+                <th>Note</th>
+                <th>Scale</th>
+                <th><small>actions</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sf of scaleForms">
+                <td>
+                    <select [(ngModel)]="sf.note" class="form-control">
+                        <option [ngValue]="n" *ngFor="let n of notes"><note [note]="n"></note></option>
+                    </select>
+                </td>
+                <td>
+                    <select [(ngModel)]="sf.scaleDefinition" class="form-control">
+                        <option [ngValue]="sd" *ngFor="let sd of scaleDefinitions">{{sd.title}}</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-danger" (click)="remove(sf)">remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="btn btn-group">
+        <button class="btn btn-sm btn-light" (click)="reset()">reset</button>
+        <button class="btn btn-sm btn-primary" (click)="go()">Go</button>
+    </div>
+
+    <div *ngIf="guitar$ | async as guitar" class="mb-2" >
+        <div *ngFor="let s of scales" class="mt-2">
+            <h2><note [note]="s.key"></note> {{s.scaleDefinition.title}} - <small>{{ s.scaleDefinition.description }}</small></h2>
+            <h4>Notes: <notes-badge-set [notes]="s.notes"></notes-badge-set></h4>
+            <guitar [model]="guitar" [notes]="s.notes"></guitar>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,7 @@ export class AppComponent {
     { title: 'Notes', route: '/notes' },
     { title: 'Chords', route: '/chords' },
     { title: 'Reverse Chord', route: '/reverse-chord'},
+    { title: 'Scales', route: '/scales' },
     { title: 'Testing', route: '/test' }
   ]
 }

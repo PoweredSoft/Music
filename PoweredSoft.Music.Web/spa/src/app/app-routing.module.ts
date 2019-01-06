@@ -6,6 +6,7 @@ import { NoteDetailPageComponent } from 'src/pages/note-detail/note-detail-page.
 import { ReverseChordPageComponent } from 'src/pages/reverse-chord/reverse-chord-page.component';
 import { ChordPageComponent } from 'src/pages/chord/chord-page.component';
 import { TestPageComponent } from 'src/pages/test/test.component';
+import { ScalePageComponent } from 'src/pages/scale/scale-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'note/:note', component: NoteDetailPageComponent },
   { path: 'reverse-chord', component: ReverseChordPageComponent },
   { path: 'chords', component: ChordPageComponent },
+  { path: 'scales', component: ScalePageComponent },
   { path: 'test', component: TestPageComponent }
 ];
 
