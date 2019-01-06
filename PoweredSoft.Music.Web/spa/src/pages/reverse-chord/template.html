@@ -2,7 +2,7 @@
     <h1>Reverse Chord</h1>
     <hr>
     <div class="mt-1" *ngIf="guitar$ | async as guitar">
-        <guitar [model]="guitar" showNotes="true" [notes]="selectedNotes" (noteClicked)="noteClicked($event)"></guitar>
+        <guitar [model]="guitar" showNotes="true" [notePositions]="notePositions" (notePositionClicked)="notePositionClicked($event)"></guitar>
     </div>
 
     <h4 class="mt-2">Selected Notes: <notes-badge-set [notes]="selectedNotes"></notes-badge-set></h4>

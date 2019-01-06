@@ -3,8 +3,9 @@ import { IGuitar } from 'src/models/IGuitar';
 import { GuitarService } from 'src/services/guitar.service';
 import { Observable } from 'rxjs';
 import { IChord } from 'src/models/IChord';
-import { INote } from 'src/models/INote';
 import { ChordService } from 'src/services/chord.service';
+import { IStringInstrumentNotePosition } from 'src/models/IStringInstrumentNotePosition';
+import { INote } from 'src/models/INote';
 
 @Component({
     selector: 'reverse-chord-page',
@@ -14,7 +15,7 @@ export class ReverseChordPageComponent implements OnInit
 {
     guitar$: Observable<IGuitar>;
     matchedChords: IChord[] = [];
-    selectedNotes: INote[] = [];
+    notePositions: IStringInstrumentNotePosition[] = [];
 
     constructor(private guitarService: GuitarService, private chordService: ChordService) {
 
@@ -24,13 +25,23 @@ export class ReverseChordPageComponent implements OnInit
         this.guitar$ = this.guitarService.standardTuning();
     }
 
-    noteClicked(note: INote) {
+    notePositionClicked(notePosition: IStringInstrumentNotePosition) {
         
-        let existing = this.selectedNotes.find(t => t.name == note.name);
+        let existing = this.notePositions.find(t => t.stringPosition == notePosition.stringPosition 
+            && t.stringNotePosition == notePosition.stringNotePosition);
         if (existing)
-            this.selectedNotes = this.selectedNotes.filter(t => t != existing);
+            this.notePositions = this.notePositions.filter(t => t != existing);
         else
-            this.selectedNotes.push(note);
+            this.notePositions.push(notePosition);
+    }
+
+    get selectedNotes() {
+        return this.notePositions.map(t => t.note).reduce<INote[]>((prev, next) => {
+            if (prev.findIndex(t => t.name == next.name) === -1)
+                prev.push(next);
+
+            return prev;
+        }, []);
     }
 
     searchPossibleChords() {
@@ -40,6 +51,6 @@ export class ReverseChordPageComponent implements OnInit
 
     reset() {
         this.matchedChords = [];
-        this.selectedNotes = [];
+        this.notePositions = [];
     }
 }

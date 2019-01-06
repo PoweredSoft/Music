@@ -20,7 +20,7 @@ export class StringInstrumentComponent
     @Input() showNotes: boolean;
     @Input() reversed: boolean;
 
-    @Input() stringNotes: Array<IStringInstrumentNotePosition> = [];
+    @Input() notePositions: Array<IStringInstrumentNotePosition> = [];
     @Output() notePositionClicked = new EventEmitter<IStringInstrumentNotePosition>();
 
     @Input() notes: INote[];
@@ -93,8 +93,8 @@ export class StringInstrumentComponent
     }
 
     isInStringNotes(stringPosition: number, stringNotePosition: number) {
-        return this.stringNotes && 
-            this.stringNotes.findIndex(t => t.stringPosition == stringPosition && t.stringNotePosition == stringNotePosition) > -1;
+        return this.notePositions && 
+            this.notePositions.findIndex(t => t.stringPosition == stringPosition && t.stringNotePosition == stringNotePosition) > -1;
     }
 
     isInNotes(note: INote) 
