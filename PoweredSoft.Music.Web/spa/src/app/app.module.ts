@@ -19,10 +19,11 @@ import { StringInstrumentComponent } from 'src/components/string-instrument/stri
 import { GuitarComponent } from 'src/components/guitar/guitar.component';
 import { GuitarService } from 'src/services/guitar.service';
 import { ChordPageComponent } from 'src/pages/chord/chord-page.component';
+import { TestPageComponent } from 'src/pages/test/test.component';
 
 
 const components = [NoteComponent, NoteBadgeComponent, NotesBadgeSetComponent, StringInstrumentComponent, GuitarComponent];
-const pages = [HomePageComponent, NotePageComponent, NoteDetailPageComponent, ReverseChordPageComponent, ChordPageComponent];
+const pages = [HomePageComponent, NotePageComponent, NoteDetailPageComponent, ReverseChordPageComponent, ChordPageComponent, TestPageComponent];
 const services = [NoteService, NoteIntervalService, ChordService, GuitarService];
 
 @NgModule({

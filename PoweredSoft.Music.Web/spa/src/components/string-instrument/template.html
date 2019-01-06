@@ -6,9 +6,9 @@
     </thead>
     <tbody>
         <tr *ngFor="let s of finalStrings">
-            <th [class.font-weight-bold]="isInNotes(s.openStringNote)" (click)="emitOpenStringClicked(s)" [class.text-primary]="isInNotes(s.openStringNote)">{{ s.openStringNote.name }}</th>
-            <td *ngFor="let sn of s.stringNotes" (click)="emitStringNoteClicked(sn)">
-                <div class="badge" [class.badge-light]="!isInNotes(sn.note)" [class.badge-primary]="isInNotes(sn.note)" *ngIf="showNote(sn.note)">{{ sn.note.name }}</div>
+            <th (click)="emitOpenStringClicked(s)" [class.text-primary]="openStringIsPrimary(s)">{{ s.openStringNote.name }}</th>
+            <td *ngFor="let sn of s.stringNotes" (click)="emitStringNoteClicked(s, sn)">
+                <div class="badge" [class.badge-light]="!isStringNotePrimary(s, sn)" [class.badge-primary]="isStringNotePrimary(s, sn)" *ngIf="showStringNote(s, sn)">{{ sn.note.name }}</div>
                 <hr [style.border-top-width]="getStringWidth(s)">
             </td>
             <td class="bridge">
