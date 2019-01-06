@@ -35,7 +35,7 @@
         <button class="btn btn-sm btn-primary" (click)="go()">Go</button>
     </div>
 
-    <div *ngIf="guitar$ | async as guitar">
+    <div *ngIf="guitar$ | async as guitar" class="mb-2" >
         <div *ngFor="let c of chords" class="mt-2">
             <h2><note [note]="c.key"></note> {{c.chordDefinition.title}} - <small>{{ c.chordDefinition.description }}</small></h2>
             <h4>Notes: <notes-badge-set [notes]="c.notes"></notes-badge-set></h4>

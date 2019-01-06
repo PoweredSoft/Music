@@ -15,6 +15,7 @@ namespace PoweredSoft.Music.Theory.Extensions
             services.TryAddTransient<IIntervalService, IntervalService>();
             services.TryAddTransient<INoteIntervalService, NoteIntervalService>();
             services.TryAddTransient<IChordService, ChordService>();
+            services.TryAddTransient<IScaleService, ScaleService>();
             return services;
         }
     }
