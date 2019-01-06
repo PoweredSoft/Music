@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <h1>Chords</h1>
+    <div class="btn-group">
+        <button class="btn btn-sm btn-primary" (click)="add()">add</button>
+    </div>
+    <table class="table table-sm table-stripped mt-1">
+        <thead>
+            <tr>
+                <th>Note</th>
+                <th>Chord</th>
+                <th><small>actions</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cf of chordForms">
+                <td>
+                    <select [(ngModel)]="cf.note" class="form-control">
+                        <option [ngValue]="n" *ngFor="let n of notes"><note [note]="n"></note></option>
+                    </select>
+                </td>
+                <td>
+                    <select [(ngModel)]="cf.chordDefinition" class="form-control">
+                        <option [ngValue]="cd" *ngFor="let cd of chordDefinitions">{{cd.title}}</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-danger" (click)="remove(cf)">remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="btn btn-group">
+        <button class="btn btn-sm btn-light" (click)="reset()">reset</button>
+        <button class="btn btn-sm btn-primary" (click)="go()">Go</button>
+    </div>
+
+    <div *ngIf="guitar$ | async as guitar">
+        <div *ngFor="let c of chords" class="mt-2">
+            <h2><note [note]="c.key"></note> {{c.chordDefinition.title}} - <small>{{ c.chordDefinition.description }}</small></h2>
+            <h4>Notes: <notes-badge-set [notes]="c.notes"></notes-badge-set></h4>
+            <guitar  [model]="guitar" [notes]="c.notes"></guitar>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule }from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,10 +18,11 @@ import { ReverseChordPageComponent } from 'src/pages/reverse-chord/reverse-chord
 import { StringInstrumentComponent } from 'src/components/string-instrument/string-instrument.component';
 import { GuitarComponent } from 'src/components/guitar/guitar.component';
 import { GuitarService } from 'src/services/guitar.service';
+import { ChordPageComponent } from 'src/pages/chord/chord-page.component';
 
 
 const components = [NoteComponent, NoteBadgeComponent, NotesBadgeSetComponent, StringInstrumentComponent, GuitarComponent];
-const pages = [HomePageComponent, NotePageComponent, NoteDetailPageComponent, ReverseChordPageComponent];
+const pages = [HomePageComponent, NotePageComponent, NoteDetailPageComponent, ReverseChordPageComponent, ChordPageComponent];
 const services = [NoteService, NoteIntervalService, ChordService, GuitarService];
 
 @NgModule({
@@ -30,6 +32,7 @@ const services = [NoteService, NoteIntervalService, ChordService, GuitarService]
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [services],

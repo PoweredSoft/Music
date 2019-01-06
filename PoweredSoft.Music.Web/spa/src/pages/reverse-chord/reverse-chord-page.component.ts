@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IGuitar } from 'src/models/IGuitar';
 import { GuitarService } from 'src/services/guitar.service';
 import { Observable } from 'rxjs';
-import { IStringInstrumentNote } from 'src/components/string-instrument/IStringInstrumentNote';
 import { IChord } from 'src/models/IChord';
 import { INote } from 'src/models/INote';
 import { ChordService } from 'src/services/chord.service';
@@ -15,7 +14,7 @@ export class ReverseChordPageComponent implements OnInit
 {
     guitar$: Observable<IGuitar>;
     matchedChords: IChord[] = [];
-    selectedNotes: IStringInstrumentNote[] = [];
+    selectedNotes: INote[] = [];
 
     constructor(private guitarService: GuitarService, private chordService: ChordService) {
 
@@ -25,24 +24,17 @@ export class ReverseChordPageComponent implements OnInit
         this.guitar$ = this.guitarService.standardTuning();
     }
 
-    get notes() {
-        return this.selectedNotes.map(t => t.note);
-    }
-
     noteClicked(note: INote) {
         
-        let existing = this.selectedNotes.find(t => t.note.name == note.name);
+        let existing = this.selectedNotes.find(t => t.name == note.name);
         if (existing)
             this.selectedNotes = this.selectedNotes.filter(t => t != existing);
         else
-            this.selectedNotes.push({
-                note: note,
-                color: 'primary'
-            });
+            this.selectedNotes.push(note);
     }
 
     searchPossibleChords() {
-        this.chordService.reverseSearch(this.selectedNotes.map(n => n.note))
+        this.chordService.reverseSearch(this.selectedNotes)
             .subscribe(chords => this.matchedChords = chords);
     }
 

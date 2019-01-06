@@ -23,5 +23,8 @@ namespace PoweredSoft.Music.Web.Controllers
             var splitted = notes.Split(',');
             return chordService.ReverseSearch(splitted);
         }
+
+        [HttpGet, Route("/api/[controller]s/definitions")]
+        public IEnumerable<IChordDefinition> Definitions([FromServices]IChordService chordService) => chordService.GetDefinitions();
     }
 }

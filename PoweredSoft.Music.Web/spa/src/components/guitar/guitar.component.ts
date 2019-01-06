@@ -13,7 +13,7 @@ export class GuitarComponent extends StringInstrumentComponent
         super();
         this.firstFretWidth = 1.4312;
         this.distanceBetweenFrets = 1.059463;
-        this.necksSize = 19.6;
+        this.necksSize = 19.25;
     }
 
 

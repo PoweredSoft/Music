@@ -5,7 +5,7 @@
         <guitar [model]="guitar" showNotes="true" [notes]="selectedNotes" (noteClicked)="noteClicked($event)"></guitar>
     </div>
 
-    <h4 class="mt-2">Selected Notes: <notes-badge-set [notes]="notes"></notes-badge-set></h4>
+    <h4 class="mt-2">Selected Notes: <notes-badge-set [notes]="selectedNotes"></notes-badge-set></h4>
     <div class="mt-2 btn-group">
         <button class="btn btn-primary btn-sm mt-2" (click)="searchPossibleChords()">Search for possible chords with matching notes</button>
         <button class="btn btn-secondary btn-sm mt-2" (click)="reset()">Clear selected notes</button>

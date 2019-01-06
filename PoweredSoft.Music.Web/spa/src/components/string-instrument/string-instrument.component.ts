@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { IStringInstrument } from 'src/models/IStringInstrument';
-import { IStringInstrumentNote } from './IStringInstrumentNote';
 import { INote } from 'src/models/INote';
 import { IInstrumentString } from 'src/models/IInstrumentString';
 
@@ -17,7 +16,7 @@ export class StringInstrumentComponent
     @Input() model: IStringInstrument;
     @Input() necksSize: number;
     @Input() showNotes: boolean;
-    @Input() notes: IStringInstrumentNote[];
+    @Input() notes: INote[];
     @Input() reversed: boolean;
 
     @Output() noteClicked = new EventEmitter<INote>();
@@ -33,7 +32,7 @@ export class StringInstrumentComponent
     getFretWidth(index: number) {
 
         if (index == 0)
-            return '40px';   
+            return '20px';   
 
         let width = this.firstFretWidth;
         for(let i = 2; i <= index;i++) {
@@ -54,7 +53,7 @@ export class StringInstrumentComponent
 
     isInNotes(note: INote) 
     {
-        return this.notes && this.notes.findIndex(t => t.note.name == note.name) > -1 ? true : false;
+        return this.notes && this.notes.findIndex(t => t.name == note.name) > -1 ? true : false;
     }
 
     showNote(note: INote) {
