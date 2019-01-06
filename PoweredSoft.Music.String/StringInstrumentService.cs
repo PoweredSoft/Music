@@ -26,9 +26,10 @@ namespace PoweredSoft.Music.String
 
             var instrument = new T();
             instrument.SemiToneCount = semiTonesCount;
-            instrument.Strings = openStrings.Select(openString =>
+            instrument.Strings = openStrings.Select((openString, index) =>
             {
                 var fretString = CreateString(notes, openString, semiTonesCount);
+                fretString.Position = index+1;
                 return fretString;
             }).ToList();
             
@@ -44,14 +45,18 @@ namespace PoweredSoft.Music.String
         protected IInstrumentString CreateString(IList<INote> notes, INote openStringNote, int semiToneCount)
         {
             var ret = new InstrumentString();
-            ret.Notes = new List<INote>();
+            ret.StringNotes = new List<IInstrumentStringNote>();
             ret.OpenStringNote = openStringNote.DeepClone();
 
-            for(var i = 0; i < semiToneCount; i++)
+            for(var i = 1; i <= semiToneCount; i++)
             {
-                var previousNote = ret.Notes.LastOrDefault() ?? ret.OpenStringNote;
+                var previousStringNote = ret.StringNotes.LastOrDefault();
+                var previousNote = previousStringNote?.Note ?? openStringNote;
                 var nextNote = NoteIntervalService.NextNote(notes, previousNote);
-                ret.Notes.Add(nextNote);
+                ret.StringNotes.Add(new StringInstrumentNote {
+                    Position = i,
+                    Note = nextNote
+                });;
             }
 
             return ret;

@@ -195,7 +195,7 @@ namespace PoweredSoft.Music.Theory
         {
             var possibleChords = notes.SelectMany(note => GetChords(note)).ToList();
             var ret = possibleChords
-                .Where(chord => notes.All(n => chord.Notes.Any(cn => cn.Equals(n))))
+                .Where(chord => chord.Notes.Count() == notes.Count() && notes.All(n => chord.Notes.Any(cn => cn.Equals(n))))
                 .ToList();
 
             return ret;

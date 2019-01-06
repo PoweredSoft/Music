@@ -8,8 +8,8 @@ namespace PoweredSoft.Music.String
 {
     public class InstrumentString : IInstrumentString
     {
+        public int Position { get; set; }
         public INote OpenStringNote { get; set; }
-
-        public IList<INote> Notes { get; set; }
+        public IList<IInstrumentStringNote> StringNotes { get; set; }
     }
 }

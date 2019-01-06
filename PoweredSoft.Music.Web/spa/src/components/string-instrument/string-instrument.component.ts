@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { IStringInstrument } from 'src/models/IStringInstrument';
 import { INote } from 'src/models/INote';
 import { IInstrumentString } from 'src/models/IInstrumentString';
+import { IInstrumentStringNote } from 'src/models/IInstrumentStringNote';
 
 @Component({
     selector: 'string-instrument',
@@ -19,6 +20,8 @@ export class StringInstrumentComponent
     @Input() notes: INote[];
     @Input() reversed: boolean;
 
+    @Output() stringNoteClicked = new EventEmitter<IInstrumentStringNote>();
+    @Output() openStringClicked = new EventEmitter<IInstrumentString>();
     @Output() noteClicked = new EventEmitter<INote>();
 
     constructor() {
@@ -43,8 +46,14 @@ export class StringInstrumentComponent
         return `${percentage}%`;
     }
 
-    emitNoteClicked(note: INote) {
-        this.noteClicked.emit(note);
+    emitStringNoteClicked(stringNote: IInstrumentStringNote) {
+        this.stringNoteClicked.emit(stringNote);
+        this.noteClicked.emit(stringNote.note);
+    }
+
+    emitOpenStringClicked(string: IInstrumentString) {
+        this.openStringClicked.emit(string);
+        this.noteClicked.emit(string.openStringNote);
     }
 
     get finalStrings() {
