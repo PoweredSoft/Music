@@ -23,6 +23,34 @@ public class ScaleService : IScaleService
             DistancePatternInSemiTones = new List<int> {
                 2, 2, 1, 2, 2, 2, 1
             }
+        },
+        new ScaleDefinition
+        {
+            Type = Scales.Minor,
+            Title = "Minor Scale",
+            Description = string.Empty,
+            DistancePatternInSemiTones = new List<int> {
+                2, 1, 2, 2, 1, 2, 2
+            }
+        },
+        new ScaleDefinition
+        {
+            Type = Scales.MajorPentatonic,
+            Title = "Major Pentatonic",
+            Description = string.Empty,
+            DistancePatternInSemiTones = new List<int> {
+                2, 2, 3, 2
+            }
+        },
+        new ScaleDefinition
+        {
+            Type = Scales.MinorPentatonic,
+            Title = "Minor Pentatonic",
+            Description = string.Empty,
+            // 1-b3-4-5-b7
+            DistancePatternInSemiTones = new List<int> {
+                3, 2, 2, 3               
+            }
         }
     };
 
