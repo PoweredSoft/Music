@@ -46,6 +46,7 @@
             <tr>
                 <th>Notes</th>
                 <th>Title</th>
+                <th>Pattern</th>
             </tr>
         </thead>
         <tbody>
@@ -54,6 +55,7 @@
                     <notes-badge-set [notes]="s.notes"></notes-badge-set>
                 </td>
                 <td class="text-nowrap">{{ s.scaleDefinition.title }}</td>
+                <td><scale-pattern [definition]="s.scaleDefinition"></scale-pattern></td>
             </tr>
         </tbody>
     </table>
