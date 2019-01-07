@@ -38,7 +38,8 @@
     <div *ngIf="guitar$ | async as guitar" class="mb-2" >
         <div *ngFor="let s of scales" class="mt-2">
             <h2><note [note]="s.key"></note> {{s.scaleDefinition.title}} <small>{{ s.scaleDefinition.description }}</small></h2>
-            <h4>Notes: <notes-badge-set [notes]="s.notes"></notes-badge-set></h4>
+            <p>Scale Pattern: <scale-pattern [definition]="s.scaleDefinition"></scale-pattern></p>
+            <p>Notes: <notes-badge-set [notes]="s.notes"></notes-badge-set></p>
             <guitar [model]="guitar" [notes]="s.notes"></guitar>
         </div>
     </div>

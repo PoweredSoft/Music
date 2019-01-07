@@ -22,9 +22,10 @@ import { ChordPageComponent } from 'src/pages/chord/chord-page.component';
 import { TestPageComponent } from 'src/pages/test/test.component';
 import { ScaleService } from 'src/services/scale.service';
 import { ScalePageComponent } from 'src/pages/scale/scale-page.component';
+import { ScalePatternComponent } from 'src/components/scale-pattern/scale-pattern.component';
 
 
-const components = [NoteComponent, NoteBadgeComponent, NotesBadgeSetComponent, StringInstrumentComponent, GuitarComponent];
+const components = [NoteComponent, NoteBadgeComponent, NotesBadgeSetComponent, StringInstrumentComponent, GuitarComponent, ScalePatternComponent];
 const pages = [HomePageComponent, NotePageComponent, NoteDetailPageComponent, ReverseChordPageComponent, ChordPageComponent, ScalePageComponent, TestPageComponent];
 const services = [NoteService, NoteIntervalService, ChordService, GuitarService, ScaleService];
 
