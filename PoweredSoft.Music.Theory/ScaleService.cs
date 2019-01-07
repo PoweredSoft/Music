@@ -35,11 +35,65 @@ public class ScaleService : IScaleService
         },
         new ScaleDefinition
         {
+            Type = Scales.HarmonicMinorScale,  
+            Title = "Harmonic Minor Scale",
+            Description = "",
+            DistancePatternInSemiTones = new List<int>{
+                2, 1, 2, 2, 1, 3, 1
+            } 
+        },
+        new ScaleDefinition
+        {
+            Type = Scales.MelodicMinorScaleUp,
+            Title = "Melodic Minor Scale Going Up",
+            Description = "",
+            DistancePatternInSemiTones = new List<int> {
+                2, 1, 2, 2, 2, 2, 1
+            }
+        },
+        new ScaleDefinition
+        {
+            Type = Scales.MelodicMinorScaleDown,
+            Title = "Melodic Minor Scale Going Down",
+            Description = "",
+            DistancePatternInSemiTones = new List<int>{
+                2, 2, 1, 2, 2, 1, 2
+            }
+        },
+        new ScaleDefinition
+        {
+            Type = Scales.DorianMode,
+            Title = "Dorion Mode",
+            Description = "",
+            DistancePatternInSemiTones = new List<int>{
+                2, 1, 2, 2, 2, 1, 2
+            }
+        },
+        new ScaleDefinition
+        {
+            Type = Scales.MyxolydianMode,
+            Title = "Mixolydian Mode",
+            Description = "",
+            DistancePatternInSemiTones = new List<int> {
+                2, 2, 1, 2, 2, 1, 2
+            }
+        },
+        new ScaleDefinition
+        {
+            Type = Scales.AhavaRabaMode,
+            Title = "Ahava Raba Mode",
+            Description = "",
+            DistancePatternInSemiTones = new List<int> {
+                1, 3, 1, 2, 1, 2, 2
+            }
+        },
+        new ScaleDefinition
+        {
             Type = Scales.MajorPentatonic,
             Title = "Major Pentatonic",
             Description = string.Empty,
             DistancePatternInSemiTones = new List<int> {
-                2, 2, 3, 2
+                2, 2, 3, 2, 3
             }
         },
         new ScaleDefinition
@@ -49,7 +103,7 @@ public class ScaleService : IScaleService
             Description = string.Empty,
             // 1-b3-4-5-b7
             DistancePatternInSemiTones = new List<int> {
-                3, 2, 2, 3               
+                3, 2, 2, 3, 2           
             }
         }
     };

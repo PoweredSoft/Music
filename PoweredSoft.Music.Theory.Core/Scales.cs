@@ -3,5 +3,11 @@ public enum Scales
     Major,
     Minor,
     MajorPentatonic,
-    MinorPentatonic
+    MinorPentatonic,
+    HarmonicMinorScale,
+    MelodicMinorScaleUp,
+    MelodicMinorScaleDown,
+    DorianMode,
+    MyxolydianMode,
+    AhavaRabaMode
 }

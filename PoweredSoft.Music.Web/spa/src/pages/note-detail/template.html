@@ -39,4 +39,22 @@
             </tr>
         </tbody>
     </table>
+
+    <h4>Scales</h4>
+    <table class="table table-sm table-stripped"> 
+        <thead>
+            <tr>
+                <th>Notes</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let s of scales$ | async">
+                <td class="text-nowrap">
+                    <notes-badge-set [notes]="s.notes"></notes-badge-set>
+                </td>
+                <td class="text-nowrap">{{ s.scaleDefinition.title }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
