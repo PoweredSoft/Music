@@ -13,6 +13,7 @@ namespace PoweredSoft.Music.String.Extensions
             services.TryAddTransient<IStringInstrumentService, StringInstrumentService>();
             services.TryAddTransient<IGuitarService, GuitarService>();
             services.TryAddTransient<IUkuleleService, UkuleleService>();
+            services.TryAddTransient<IStringInstrumentChordService, StringInstrumentChordService>();
             return services;
         }
     }
