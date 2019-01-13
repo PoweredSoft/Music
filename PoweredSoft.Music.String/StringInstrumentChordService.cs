@@ -34,8 +34,10 @@ namespace PoweredSoft.Music.String
 
         private IStringInstrumentChord GetStringInstrumentChord(IStringInstrument stringInstrument, IChord chord)
         {
+            var possibilities = new List<IStringInstrumentChordPossibility>();
             var ret = new StringInstrumentChord();
             ret.Chord = chord;
+            ret.ChordPossibilities = possibilities;
 
             // semi tone index.
             for (var sti = 0; sti < stringInstrument.SemiToneCount; sti++)
@@ -50,8 +52,19 @@ namespace PoweredSoft.Music.String
                     })
                     .ToList();
 
-                // TODO figure out how to determine best chords from this information.
+                var temp = FindChordPossibilities(chord, stringNotePositions);
+                possibilities.AddRange(temp);
             }
+
+            return ret;
+        }
+
+        private List<IStringInstrumentChordPossibility> FindChordPossibilities(IChord chord, 
+            IList<Tuple<IInstrumentString, IList<IStringInstrumentNotePosition>>> stringNotePositions)
+        {
+            var ret = new List<IStringInstrumentChordPossibility>();
+
+            // TODO seems hard.
 
             return ret;
         }
