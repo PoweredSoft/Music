@@ -1,3 +1,6 @@
-<div class="container-fluid" *ngIf="guitar$ | async as guitar">
-    <guitar [model]="guitar"></guitar>
+
+<div *ngIf="stringInstrumentChord">
+    <div *ngFor="let t of stringInstrumentChord.chordPossibilities">
+        <guitar [model]="guitar" [notePositions]="t.notePositions"></guitar>
+    </div>
 </div>

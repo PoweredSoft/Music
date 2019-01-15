@@ -64,7 +64,22 @@ namespace PoweredSoft.Music.String
         {
             var ret = new List<IStringInstrumentChordPossibility>();
 
-            // TODO seems hard.
+            // for now lets try to create a single chord :)
+            var possibility = new StringInstrumentChordPossibility();
+            possibility.NotePositions = new List<IStringInstrumentNotePosition>();
+
+            for(var i = 0 ; i < stringNotePositions.Count; i++)
+            {
+                var firstNoteFound = stringNotePositions[i].Item2.FirstOrDefault(t => chord.Notes.Any(t2 => t2.Equals(t.Note)));
+                if (firstNoteFound == null)
+                    possibility.NotePositions.Clear();
+                else
+                    possibility.NotePositions.Add(firstNoteFound);
+            }
+
+            var allPresent = chord.Notes.All(n => possibility.NotePositions.Any(np => np.Note.Equals(n)));
+            if (allPresent)
+                ret.Add(possibility);
 
             return ret;
         }

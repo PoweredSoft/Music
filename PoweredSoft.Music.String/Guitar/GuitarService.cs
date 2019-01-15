@@ -22,7 +22,7 @@ namespace PoweredSoft.Music.String
             var d = NoteService.GetNoteByName("D");
             var g = NoteService.GetNoteByName("G");
             var b = NoteService.GetNoteByName("B");
-            var guitar = FrettedLuteInstrumentService.CreateInstrument<Guitar>(24, e, b, g, d, a, e);
+            var guitar = FrettedLuteInstrumentService.CreateInstrument<Guitar>(fretCount, e, b, g, d, a, e);
             return guitar;
         }
     }

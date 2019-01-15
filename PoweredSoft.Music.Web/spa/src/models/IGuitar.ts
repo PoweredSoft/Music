@@ -1,3 +1,4 @@
-import { IInstrumentString } from './IInstrumentString';
-export interface IGuitar extends IInstrumentString {
+
+import { IStringInstrument } from './IStringInstrument';
+export interface IGuitar extends IStringInstrument {
 }
