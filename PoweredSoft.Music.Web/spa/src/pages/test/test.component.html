@@ -1,6 +1,9 @@
 
-<div *ngIf="stringInstrumentChord">
+<div *ngIf="stringInstrumentChord" class="container-fluid">
+    <h1><note [note]="stringInstrumentChord.chord.key"></note> {{stringInstrumentChord.chord.chordDefinition.title}}</h1>
+    <notes-badge-set [notes]="stringInstrumentChord.chord.notes"></notes-badge-set>
+    <hr>
     <div *ngFor="let t of stringInstrumentChord.chordPossibilities">
-        <guitar [model]="guitar" [notePositions]="t.notePositions"></guitar>
+        <guitar [model]="guitar" showNotes="true" [notePositions]="t.notePositions"></guitar>
     </div>
 </div>
