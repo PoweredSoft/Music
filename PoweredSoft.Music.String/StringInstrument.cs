@@ -6,7 +6,7 @@ namespace PoweredSoft.Music.String
 {
     public class StringInstrument : IStringInstrument
     {
-        public virtual string Name => "String Intrument";
+        public virtual string Name { get; set; } = "Unknown";
 
         public int SemiToneCount { get; set; }
 

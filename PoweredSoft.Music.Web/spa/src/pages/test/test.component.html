@@ -1,9 +1,79 @@
+<div class="container">
 
-<div *ngIf="stringInstrumentChord" class="container-fluid">
-    <h1><note [note]="stringInstrumentChord.chord.key"></note> {{stringInstrumentChord.chord.chordDefinition.title}}</h1>
-    <notes-badge-set [notes]="stringInstrumentChord.chord.notes"></notes-badge-set>
+    <h1 class="text-center">Build your string instrument</h1>
     <hr>
-    <div *ngFor="let t of stringInstrumentChord.chordPossibilities">
-        <guitar [model]="guitar" showNotes="true" [notePositions]="t.notePositions"></guitar>
+
+    <div class="row">
+        <div class="col">
+            <label>Name</label>
+            <input class="form-control" type="text" [(ngModel)]="name">
+        </div>
+
+        <div class="col">
+            <label>Number of strings</label>
+            <input class="form-control" type="number" max="10" min="0" [(ngModel)]="numberOfStrings" (change)="numberOfStringsChanged()">
+        </div>
+
+        <div class="col">
+            <label>Number of semi tones</label>
+            <input class="form-control" type="number" min="1" max="24" [(ngModel)]="numberOfSemiTones">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label>First Fret Width</label>
+            <input class="form-control" type="number" min="0" max="10" [(ngModel)]="firstFretWidth">
+        </div>
+
+        <div class="col">
+            <label>Distance Between Frets</label>
+            <input class="form-control" type="number" min="0" max="10" [(ngModel)]="distanceBetweenFrets">
+        </div>
+
+        <div class="col">
+            <label>Necks Size <small class="font-weight-light">(In inches)</small></label>
+            <input class="form-control" type="number" min="0" max="10" [(ngModel)]="necksSize">
+        </div>
+    </div>
+
+    <label>Notes</label>
+    <div class="row">
+        <div class="col" *ngFor="let n of selectedNotes">
+            <select [(ngModel)]="n.note" class="form-control">
+                <option [ngValue]="t" *ngFor="let t of availableNotes">
+                    <note [note]="t"></note>
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <label>Choose Chord:</label>
+    <div class="row">
+        <div class="col">
+            <select [(ngModel)]="chordNote" class="form-control">
+                <option [ngValue]="t" *ngFor="let t of availableNotes">
+                    <note [note]="t"></note>
+                </option>
+            </select>
+        </div>
+
+        <div class="col">
+            <select [(ngModel)]="chordDefinition" class="form-control">
+                <option [ngValue]="cd" *ngFor="let cd of chordDefinitions">
+                    {{ cd.title }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <button class="btn btn-primary mt-2" [disabled]="numberOfStrings <= 0" (click)="go()">Go!</button>
+</div>
+
+<div class="container-fluid" *ngIf="stringInstrumentChord">
+    Result:
+    <div *ngFor="let cp of stringInstrumentChord.chordPossibilities">
+        <string-instrument *ngIf="stringInstrument" [model]="stringInstrument" [necksSize]="necksSize"
+            [distanceBetweenFrets]="distanceBetweenFrets" [firstFretWidth]="firstFretWidth" [notePositions]="cp.notePositions"></string-instrument>
     </div>
 </div>

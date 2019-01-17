@@ -8,7 +8,7 @@ import { IStringInstrumentNotePosition } from 'src/models/IStringInstrumentNoteP
 @Component({
     selector: 'string-instrument',
     styleUrls: ['./style.scss'],
-    template: ''
+    templateUrl: './template.html'
 })
 export class StringInstrumentComponent
 {
