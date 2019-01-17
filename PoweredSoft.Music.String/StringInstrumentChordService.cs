@@ -38,36 +38,69 @@ namespace PoweredSoft.Music.String
             var possibilities = new List<IStringInstrumentChordPossibility>();
             var ret = new StringInstrumentChord();
             ret.Chord = chord;
-            ret.ChordPossibilities = possibilities;
 
             // semi tone index.
-            for (var sti = 3; sti < stringInstrument.SemiToneCount; sti++)
+            for (var sti = 0; sti < stringInstrument.SemiToneCount; sti++)
             {
                 // string note index.
                 var stringNotePositions = stringInstrument.Strings
-                    .Select(currentString => 
+                    .Select(currentString =>
                     {
                         var notePositions = stringNotePositionForString(currentString, chord, sti, _typicalFingerSemiToneStretch);
                         return notePositions;
                     })
                     .ToList();
 
+                stringNotePositions.ForEach(t => t.Insert(0, null));
                 var allCombinations = Combos(stringNotePositions);
+                var combinationCases = allCombinations
+                    .Select(t => IsChord(chord, t))
+                    .ToList();
 
-                //var temp = FindChordPossibilities(chord, stringNotePositions);
-                // possibilities.AddRange(temp);
+                var tempPossibilities = combinationCases
+                    .Where(t => t.isValidChord)
+                    .Select(t => new StringInstrumentChordPossibility
+                    {
+                        NotePositions = t.notePositions
+                    });
+
+                possibilities.AddRange(tempPossibilities);
             }
+
+            ret.ChordPossibilities = possibilities
+                .Aggregate(new List<IStringInstrumentChordPossibility>(), (prev, current) =>
+                {
+                    if (!prev.Any(t => t.Equals(current)))
+                        prev.Add(current);
+                    return prev;
+                }); 
 
             return ret;
         }
 
-        public static IList<IList<T>> Combos<T>(IList<IList<T>> data, IList<IList<T>> all = null, IList<T> group = null, T val = null, int i = 0)
+        private (List<IStringInstrumentNotePosition> notePositions, bool isValidChord) IsChord(IChord chord, IList<IStringInstrumentNotePosition> notesPerString)
+        {
+            var notePositions = new List<IStringInstrumentNotePosition>();
+
+            foreach(var nps in notesPerString)
+            {
+                if (nps == null)
+                    notePositions.Clear();
+                else
+                    notePositions.Add(nps);
+            }
+
+            var isValid = chord.Notes.All(chordNote => notePositions.Any(t => t.Note.Equals(chordNote)));
+            return (notePositions, isValid);
+        }
+
+        public static IList<IList<T>> Combos<T>(IList<IList<T>> data, IList<IList<T>> all = null, IList<T> group = null, T val = null, bool addToGroup = false, int i = 0)
              where T : class
         {
             group = group ?? new List<T>();
             all = all ?? new List<IList<T>>();
 
-            if (val != null)
+            if (addToGroup)
                 group.Add(val);
 
             if (i >= data.Count)
@@ -75,14 +108,14 @@ namespace PoweredSoft.Music.String
             else
             {
                 foreach(var v in data[i])
-                    Combos<T>(data, all, group.ToList(), v, i + 1);
+                    Combos<T>(data, all, group.ToList(), v, true, i + 1);
             }
 
             return all;
         }
 
         private List<IStringInstrumentChordPossibility> FindChordPossibilities(IChord chord, 
-            IList<Tuple<IInstrumentString, IList<IStringInstrumentNotePosition>>> stringNotePositions)
+            IList<IList<IStringInstrumentNotePosition>> stringNotePositions)
         {
             var ret = new List<IStringInstrumentChordPossibility>();
 
@@ -92,7 +125,7 @@ namespace PoweredSoft.Music.String
 
             for(var i = 0 ; i < stringNotePositions.Count; i++)
             {
-                var firstNoteFound = stringNotePositions[i].Item2.FirstOrDefault(t => chord.Notes.Any(t2 => t2.Equals(t.Note)));
+                var firstNoteFound = stringNotePositions[i].FirstOrDefault(t => t != null && chord.Notes.Any(t2 => t2.Equals(t.Note)));
                 if (firstNoteFound == null)
                     possibility.NotePositions.Clear();
                 else

@@ -1,5 +1,6 @@
 using PoweredSoft.Music.String.Core;
 using PoweredSoft.Music.Theory.Core;
+using System.Collections.Generic;
 
 namespace PoweredSoft.Music.String
 {
