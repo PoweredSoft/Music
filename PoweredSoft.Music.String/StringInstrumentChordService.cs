@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using PoweredSoft.Music.String.Core;
 using PoweredSoft.Music.Theory.Core;
@@ -40,23 +41,44 @@ namespace PoweredSoft.Music.String
             ret.ChordPossibilities = possibilities;
 
             // semi tone index.
-            for (var sti = 0; sti < stringInstrument.SemiToneCount; sti++)
+            for (var sti = 3; sti < stringInstrument.SemiToneCount; sti++)
             {
                 // string note index.
                 var stringNotePositions = stringInstrument.Strings
                     .Select(currentString => 
                     {
                         var notePositions = stringNotePositionForString(currentString, chord, sti, _typicalFingerSemiToneStretch);
-                        var tuple = new Tuple<IInstrumentString, IList<IStringInstrumentNotePosition>>(currentString, notePositions);
-                        return tuple;
+                        return notePositions;
                     })
                     .ToList();
 
-                var temp = FindChordPossibilities(chord, stringNotePositions);
-                possibilities.AddRange(temp);
+                var allCombinations = Combos(stringNotePositions);
+
+                //var temp = FindChordPossibilities(chord, stringNotePositions);
+                // possibilities.AddRange(temp);
             }
 
             return ret;
+        }
+
+        public static IList<IList<T>> Combos<T>(IList<IList<T>> data, IList<IList<T>> all = null, IList<T> group = null, T val = null, int i = 0)
+             where T : class
+        {
+            group = group ?? new List<T>();
+            all = all ?? new List<IList<T>>();
+
+            if (val != null)
+                group.Add(val);
+
+            if (i >= data.Count)
+                all.Add(group);
+            else
+            {
+                foreach(var v in data[i])
+                    Combos<T>(data, all, group.ToList(), v, i + 1);
+            }
+
+            return all;
         }
 
         private List<IStringInstrumentChordPossibility> FindChordPossibilities(IChord chord, 

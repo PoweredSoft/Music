@@ -8,5 +8,10 @@ namespace PoweredSoft.Music.String
         public int StringPosition { get; set; }
         public int StringNotePosition { get; set; }
         public INote Note { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Note.Name} {StringPosition}x{StringNotePosition}";
+        }
     }
 }
