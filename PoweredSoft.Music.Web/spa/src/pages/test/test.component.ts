@@ -46,8 +46,10 @@ export class TestPageComponent implements OnInit
                 this.availableNotes = all.notes;
                 this.chordDefinitions = all.chordDefinitions;
 
-                this.numberOfStrings = 4;
+                this.numberOfStrings = 6;
                 this.selectedNotes = [
+                    { note: this.availableNotes.find(t => t.name == "E") },
+                    { note: this.availableNotes.find(t => t.name == "B") },
                     { note: this.availableNotes.find(t => t.name == "G") },
                     { note: this.availableNotes.find(t => t.name == "D") },
                     { note: this.availableNotes.find(t => t.name == "A") },

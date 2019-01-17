@@ -68,12 +68,13 @@
     </div>
 
     <button class="btn btn-primary mt-2" [disabled]="numberOfStrings <= 0" (click)="go()">Go!</button>
-</div>
 
-<div class="container-fluid" *ngIf="stringInstrumentChord">
-    Result:
-    <div *ngFor="let cp of stringInstrumentChord.chordPossibilities">
-        <string-instrument *ngIf="stringInstrument" [model]="stringInstrument" [necksSize]="necksSize"
-            [distanceBetweenFrets]="distanceBetweenFrets" [firstFretWidth]="firstFretWidth" [notePositions]="cp.notePositions"></string-instrument>
+    <hr>
+    <div *ngIf="stringInstrumentChord" style="max-height: 400px; overflow: scroll; padding-right: 10px;">
+        <div *ngFor="let cp of stringInstrumentChord.chordPossibilities" class="mb-3">
+            <string-instrument *ngIf="stringInstrument" [model]="stringInstrument" [necksSize]="necksSize"
+                [distanceBetweenFrets]="distanceBetweenFrets" [firstFretWidth]="firstFretWidth" [notePositions]="cp.notePositions"></string-instrument>
+        </div>
     </div>
 </div>
+
